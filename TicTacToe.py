@@ -18,9 +18,10 @@ else:
     current_player = 'X'
 
 #Rows and columns input
-row = int(input("Enter row (0, 1, or 2): "))
+row = int(input(f"Player {current_player}, enter row (0, 1, or 2): "))
 column = int(input("Enter column (0, 1, or 2): "))
 
+#Changing board from player input
 def play_position(row, column, current_player):
     if board[row][column] == "  ":
         board[row][column] = current_player + " " 
@@ -30,3 +31,14 @@ def play_position(row, column, current_player):
         
 play_position(row,column, current_player)
 print_board()
+
+#Check for winner
+def line_wins(line, current_player):
+    return line[0]==line[1]==line[2] == current_player
+
+def check_winner(row, column, current_player):
+      for row in range(3):
+        if line_wins(board[row], current_player):
+            print(f'Player {current_player} won the game!!')
+            return True
+        
