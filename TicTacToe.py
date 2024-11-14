@@ -17,8 +17,16 @@ if current_player == 'X':
 else:
     current_player = 'X'
 
-#Rows and collumns input
+#Rows and columns input
 row = int(input("Enter row (0, 1, or 2): "))
 column = int(input("Enter column (0, 1, or 2): "))
 
-
+def play_position(row, column, current_player):
+    if board[row][column] == "  ":
+        board[row][column] = current_player + " " 
+    else:
+        print('Oops, this spot is already taken! Try a different one.')
+    
+        
+play_position(row,column, current_player)
+print_board()
